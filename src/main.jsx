@@ -12,12 +12,13 @@ import UpdateCoffee from './components/UpdateCoffee.jsx';
 import SignUp from './components/SignUp.jsx';
 import SignIn from './components/SignIn.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import Users from './components/Users.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    loader: () => fetch('http://localhost:5000/coffee')
+    loader: () => fetch('https://coffee-store-server-afhntddnj-yeasin-mollas-projects.vercel.app/coffee')
   },
   {
     path: 'addCoffee',
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   {
     path: 'updateCoffee/:id',
     element: <UpdateCoffee></UpdateCoffee>,
-    loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+    loader: ({ params }) => fetch(`https://coffee-store-server-afhntddnj-yeasin-mollas-projects.vercel.app/coffee/${params.id}`)
 
   },
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
   {
     path: '/signin',
     element: <SignIn></SignIn>
+  },
+  {
+    path:'/users',
+    element:<Users></Users>,
+    loader: ()=> fetch('https://coffee-store-server-afhntddnj-yeasin-mollas-projects.vercel.app/user')
   }
 ]);
 
